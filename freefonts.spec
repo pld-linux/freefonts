@@ -29,24 +29,24 @@ specjalne.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/X11R6/lib/X11/fonts/Type1
-install *.pfb $RPM_BUILD_ROOT/usr/X11R6/lib/X11/fonts/Type1
+install -d $RPM_BUILD_ROOT/usr/share/fonts/Type1
+install *.pfb $RPM_BUILD_ROOT/usr/share/fonts/Type1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-cd /usr/X11R6/lib/X11/fonts/Type1
+cd /usr/share/fonts/Type1
 type1inst -nogs -quiet
 
 %postun
-cd /usr/X11R6/lib/X11/fonts/Type1
+cd /usr/share/fonts/Type1
 type1inst -nogs -quiet
 
 %files
 %defattr(644,root,root,755)
 %doc README *.license
-/usr/X11R6/lib/X11/fonts/Type1/*.pfb
+/usr/share/fonts/Type1/*.pfb
 
 %changelog
 * Tue Jan 26 1999 Micha³ Kuratczyk <kurkens@polbox.com>
