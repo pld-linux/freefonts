@@ -10,7 +10,7 @@ Source:      ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
 Requires:    type1inst >= 0.6.1
 Prereq:      type1inst
 BuildArchitectures: noarch
-BuildRoot:   /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 This is a collection of 79 freely available fonts. All of them were found in
