@@ -2,9 +2,10 @@ Summary:     Collection of Free ATM Fonts
 Summary(pl): Kolekcja Darmowych Fontów ATM
 Name:        freefonts
 Version:     0.10
-Release:     11
+Release:     12
 Copyright:   free
-Group:       X11/fonts
+Group:       X11/Utilities
+Group(pl):   X11/Narzêdzia
 Source:      ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
 Requires:    type1inst >= 0.6.1
 Prereq:      type1inst
@@ -48,6 +49,11 @@ type1inst -nogs -quiet
 /usr/X11R6/lib/X11/fonts/Type1/*.pfb
 
 %changelog
+* Tue Jan 26 1999 Micha³ Kuratczyk <kurkens@polbox.com>
+  [0.10-12]
+- changed "Group" to "X11/Utilities"
+- added "Group(pl)
+
 * Sat Sep 26 1998 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
   [0.10-11]
 - added pl translation.
