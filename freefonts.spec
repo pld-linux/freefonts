@@ -6,6 +6,7 @@ Release:	13
 License:	Free
 Group:		X11/Fonts
 Source0:	ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
+# Source0-md5:	a547b5b861d6eb138394bb83748d4eee
 Source1:	%{name}.Fontmap
 Requires(post,preun):	fileutils
 Requires(post,preun):	textutils
