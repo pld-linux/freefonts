@@ -10,6 +10,7 @@ Group(pl):	X11/Fonty
 Source0:	ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
 Source1:	%{name}.Fontmap
 Prereq:		textutils
+Prereq:		sed
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,8 +51,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 cd %{_t1fontsdir}
+rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* | sort -u > fonts.scale.tmp
-wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
@@ -59,8 +61,9 @@ cat Fontmap.* > Fontmap
 
 %postun
 cd %{_t1fontsdir}
+rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp
 ln -sf fonts.scale fonts.dir
