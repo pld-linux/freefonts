@@ -4,22 +4,27 @@ Name:		freefonts
 Version:	0.10
 Release:	12
 Copyright:	free
-Group:		X11/Utilities
-Group(pl):	X11/Narzêdzia
+Group:		X11/Fonts
+Group(de):	X11/Fonts
+Group(pl):	X11/Fonty
 Source0:	ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
-Requires:	type1inst >= 0.6.1
-Prereq:		type1inst
+Source1:	%{name}.Fontmap
+Prereq:		textutils
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_t1fontsdir	%{_fontsdir}/Type1
+%define		_t1afmdir	%{_t1fontsdir}/afm
+%define		_t1pfmdir	%{_t1fontsdir}/pfm
+
 %description
-This is a collection of 79 freely available fonts. All of them were
+This is a collection of 78 freely available fonts. All of them were
 found in the CICA archives for Windows. Some of them are missing
 special characters, some only contain capitals, some contain special
 alphabets. Be careful and check!
 
 %description -l pl
-To jest kolekcja 79 darmowych fontów. Wszystkie z nich zosta³y
+To jest kolekcja 78 darmowych fontów. Wszystkie z nich zosta³y
 znalezione w archiwach CICA dla Windows. Niektórym z nich brakuje
 znaków specjalnych, inne zawieraj± wy³±cznie wielkie litery, a inne
 znów zawieraj± tylko znaki specjalne.
@@ -29,8 +34,14 @@ znów zawieraj± tylko znaki specjalne.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/share/fonts/Type1
-install *.pfb $RPM_BUILD_ROOT/usr/share/fonts/Type1
+install -d $RPM_BUILD_ROOT{%{_t1fontsdir},%{_t1afmdir},%{_t1pfmdir}}
+mkdir ans
+tar xzf ans.tgz -C ans
+install ans/*.afm $RPM_BUILD_ROOT%{_t1afmdir}
+install ans/*.pfm $RPM_BUILD_ROOT%{_t1pfmdir}
+install *.pfb $RPM_BUILD_ROOT%{_t1fontsdir}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
+tail -n +2 fonts.dir > $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
 
 gzip -9nf README *.license
 
@@ -38,14 +49,26 @@ gzip -9nf README *.license
 rm -rf $RPM_BUILD_ROOT
 
 %post
-cd /usr/share/fonts/Type1
-type1inst -nogs -quiet
+cd %{_t1fontsdir}
+cat fonts.scale.* | sort -u > fonts.scale.tmp
+wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp >> fonts.scale
+rm -f fonts.scale.tmp
+ln -sf fonts.scale fonts.dir
+cat Fontmap.* > Fontmap
 
 %postun
-cd /usr/share/fonts/Type1
-type1inst -nogs -quiet
+cd %{_t1fontsdir}
+cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
+wc -l fonts.scale.tmp > fonts.scale
+cat fonts.scale.tmp >> fonts.scale
+rm -f fonts.scale.tmp
+ln -sf fonts.scale fonts.dir
+cat Fontmap.* > Fontmap 2>/dev/null
 
 %files
 %defattr(644,root,root,755)
 %doc {README,*.license}.gz
-/usr/share/fonts/Type1/*.pfb
+%{_t1fontsdir}/*.pfb
+%{_t1afmdir}/*.afm
+%{_t1pfmdir}/*.pfm
