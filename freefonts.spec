@@ -7,8 +7,9 @@ License:	Free
 Group:		X11/Fonts
 Source0:	ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
 Source1:	%{name}.Fontmap
-Prereq:		textutils
-Prereq:		sed
+Requires(post,preun):	fileutils
+Requires(post,preun):	sed
+Requires(post,preun):	textutils
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,6 +47,7 @@ tail -n +2 fonts.dir > $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
 rm -rf $RPM_BUILD_ROOT
 
 %post
+umask 022
 cd %{_t1fontsdir}
 rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* | sort -u > fonts.scale.tmp
@@ -56,6 +58,7 @@ ln -sf fonts.scale fonts.dir
 cat Fontmap.* > Fontmap
 
 %postun
+umask 022
 cd %{_t1fontsdir}
 rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
