@@ -6,23 +6,23 @@ Release:	12
 Copyright:	free
 Group:		X11/Utilities
 Group(pl):	X11/Narzêdzia
-Source:		ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
+Source0:	ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
 Requires:	type1inst >= 0.6.1
 Prereq:		type1inst
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This is a collection of 79 freely available fonts. All of them were found in
-the CICA archives for Windows. Some of them are missing special characters,
-some only contain capitals, some contain special alphabets. Be careful and
-check!
+This is a collection of 79 freely available fonts. All of them were
+found in the CICA archives for Windows. Some of them are missing
+special characters, some only contain capitals, some contain special
+alphabets. Be careful and check!
 
 %description -l pl
-To jest kolekcja 79 darmowych fontów. Wszystkie z nich zosta³y znalezione w
-archiwach CICA dla Windows. Niektórym z nich brakuje znaków specjalnych,
-inne zawieraj± wy³±cznie wielkie litery, a inne znów zawieraj± tylko znaki
-specjalne.
+To jest kolekcja 79 darmowych fontów. Wszystkie z nich zosta³y
+znalezione w archiwach CICA dla Windows. Niektórym z nich brakuje
+znaków specjalnych, inne zawieraj± wy³±cznie wielkie litery, a inne
+znów zawieraj± tylko znaki specjalne.
 
 %prep
 %setup -q -n freefont
