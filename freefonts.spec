@@ -1,15 +1,15 @@
-Summary:     Collection of Free ATM Fonts
-Summary(pl): Kolekcja Darmowych Fontów ATM
-Name:        freefonts
-Version:     0.10
-Release:     12
-Copyright:   free
-Group:       X11/Utilities
-Group(pl):   X11/Narzêdzia
-Source:      ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
-Requires:    type1inst >= 0.6.1
-Prereq:      type1inst
-BuildArchitectures: noarch
+Summary:	Collection of Free ATM Fonts
+Summary(pl):	Kolekcja Darmowych Fontów ATM
+Name:		freefonts
+Version:	0.10
+Release:	12
+Copyright:	free
+Group:		X11/Utilities
+Group(pl):	X11/Narzêdzia
+Source:		ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
+Requires:	type1inst >= 0.6.1
+Prereq:		type1inst
+BuildArch:	noarch
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -32,6 +32,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr/share/fonts/Type1
 install *.pfb $RPM_BUILD_ROOT/usr/share/fonts/Type1
 
+gzip -9nf README *.license
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -45,5 +47,5 @@ type1inst -nogs -quiet
 
 %files
 %defattr(644,root,root,755)
-%doc README *.license
+%doc {README,*.license}.gz
 /usr/share/fonts/Type1/*.pfb
