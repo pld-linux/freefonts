@@ -3,7 +3,7 @@ Summary(pl):	Kolekcja Darmowych Fontów ATM
 Name:		freefonts
 Version:	0.10
 Release:	12
-Copyright:	free
+License:	free
 Group:		X11/Fonts
 Group(de):	X11/Fonts
 Group(pl):	X11/Fonty
