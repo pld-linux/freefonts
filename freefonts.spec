@@ -3,7 +3,7 @@ Summary(pl):	Kolekcja Darmowych Fontów ATM
 Name:		freefonts
 Version:	0.10
 Release:	13
-License:	free
+License:	Free
 Group:		X11/Fonts
 Source0:	ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
 Source1:	%{name}.Fontmap
