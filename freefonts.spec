@@ -1,20 +1,27 @@
-Summary:   Collection of Free ATM Fonts
-Name:      freefonts
-Version:   0.10
-Release:   10
-Copyright: free
+Summary:     Collection of Free ATM Fonts
+Summary(pl): Kolekcja Darmowych Fontów ATM
+Name:        freefonts
+Version:     0.10
+Release:     11
+Copyright:   free
+Group:       X11/fonts
+Source:      ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
+Requires:    type1inst >= 0.6.1
+Prereq:      type1inst
 BuildArchitectures: noarch
-Group:     X11/fonts
-Source:    ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
-Requires:  type1inst >= 0.6.1
-Prereq:    type1inst
-BuildRoot: /tmp/%{name}-%{version}-root
+BuildRoot:   /tmp/%{name}-%{version}-root
 
 %description
 This is a collection of 79 freely available fonts. All of them were found in
 the CICA archives for Windows. Some of them are missing special characters,
 some only contain capitals, some contain special alphabets. Be careful and
 check!
+
+%description -l pl
+To jest kolekcja 79 darmowych fontów. Wszystkie z nich zosta³y znalezione w
+archiwach CICA dla Windows. Niektórym z nich brakuje znaków specjalnych,
+inne zawieraj± wy³±cznie wielkie litery, a inne znów zawieraj± tylko znaki
+specjalne.
 
 %prep
 %setup -q -n freefont
@@ -41,6 +48,10 @@ type1inst -nogs -quiet
 /usr/X11R6/lib/X11/fonts/Type1/*.pfb
 
 %changelog
+* Sat Sep 26 1998 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
+  [0.10-11]
+- added pl translation.
+
 * Thu Jul 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.10-10]
 - added "Requires: type1inst >= 0.6.1",
