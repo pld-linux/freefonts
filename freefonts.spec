@@ -2,14 +2,14 @@ Summary:	Collection of Free ATM Fonts
 Summary(pl):	Kolekcja Darmowych Fontów ATM
 Name:		freefonts
 Version:	0.10
-Release:	13
+Release:	14
 License:	Free
 Group:		X11/Fonts
 Source0:	ftp://sunsite.unc.edu/pub/Linux/X11/fonts/%{name}-%{version}.tar.gz
 # Source0-md5:	a547b5b861d6eb138394bb83748d4eee
 Source1:	%{name}.Fontmap
-Requires(post,preun):	fileutils
-Requires(post,preun):	textutils
+Requires(post,postun):	fontpostinst
+Requires:	%{_fontsdir}/Type1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,26 +47,10 @@ tail -n +2 fonts.dir > $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-umask 022
-cd %{_t1fontsdir}
-rm -f fonts.scale.bak Fontmap.bak
-cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp
-ln -sf fonts.scale fonts.dir
-cat Fontmap.* > Fontmap
+fontpostinst Type1
 
 %postun
-umask 022
-cd %{_t1fontsdir}
-rm -f fonts.scale.bak Fontmap.bak
-cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp
-ln -sf fonts.scale fonts.dir
-cat Fontmap.* > Fontmap 2>/dev/null
+fontpostinst Type1
 
 %files
 %defattr(644,root,root,755)
