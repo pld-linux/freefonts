@@ -42,8 +42,6 @@ install *.pfb $RPM_BUILD_ROOT%{_t1fontsdir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_t1fontsdir}/Fontmap.%{name}
 tail -n +2 fonts.dir > $RPM_BUILD_ROOT%{_t1fontsdir}/fonts.scale.%{name}
 
-gzip -9nf README *.license
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -69,7 +67,7 @@ cat Fontmap.* > Fontmap 2>/dev/null
 
 %files
 %defattr(644,root,root,755)
-%doc {README,*.license}.gz
+%doc README *.license
 %{_t1fontsdir}/*.pfb
 %{_t1afmdir}/*.afm
 %{_t1pfmdir}/*.pfm
