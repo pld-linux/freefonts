@@ -55,6 +55,8 @@ fontpostinst Type1
 %files
 %defattr(644,root,root,755)
 %doc README *.license
+%{_t1fontsdir}/fonts.scale.%{name}
+%{_t1fontsdir}/Fontmap.%{name}
 %{_t1fontsdir}/*.pfb
 %{_t1afmdir}/*.afm
 %{_t1pfmdir}/*.pfm
