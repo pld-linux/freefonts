@@ -1,5 +1,5 @@
 Summary:	Collection of Free ATM Fonts
-Summary(pl):	Kolekcja Darmowych Fontów ATM
+Summary(pl.UTF-8):   Kolekcja Darmowych FontÃ³w ATM
 Name:		freefonts
 Version:	0.10
 Release:	14
@@ -23,11 +23,11 @@ found in the CICA archives for Windows. Some of them are missing
 special characters, some only contain capitals, some contain special
 alphabets. Be careful and check!
 
-%description -l pl
-To jest kolekcja 78 darmowych fontów. Wszystkie z nich zosta³y
-znalezione w archiwach CICA dla Windows. Niektórym z nich brakuje
-znaków specjalnych, inne zawieraj± wy³±cznie wielkie litery, a inne
-znów zawieraj± tylko znaki specjalne.
+%description -l pl.UTF-8
+To jest kolekcja 78 darmowych fontÃ³w. Wszystkie z nich zostaÅ‚y
+znalezione w archiwach CICA dla Windows. NiektÃ³rym z nich brakuje
+znakÃ³w specjalnych, inne zawierajÄ… wyÅ‚Ä…cznie wielkie litery, a inne
+znÃ³w zawierajÄ… tylko znaki specjalne.
 
 %prep
 %setup -q -n freefont
