@@ -1,5 +1,5 @@
 Summary:	Collection of Free ATM Fonts
-Summary(pl.UTF-8):   Kolekcja Darmowych Fontów ATM
+Summary(pl.UTF-8):	Kolekcja Darmowych Fontów ATM
 Name:		freefonts
 Version:	0.10
 Release:	14
